@@ -16,9 +16,7 @@ $(document).ready(function() {
 		//displays all data from form inputs
 		//remove buttons added to end of newobj's contents
 	var createNewObj = function(){
-		var i = 0;
 		$("body").append("<div class='newobj'><p>first name: " + employee.firstname + "</p><p>last name: " + employee.lastname + "</p><p> employee number: " + employee.employeenumber + "</p><p>title: " + employee.title + "</p><p>salary: " + employee.salary + "</p><p><span class='score var'>review score: " + employee.reviewscore + "</span><p><button class='removebutton'>remove</button></p></div>");
-		i++
 		reviewColorIndicator();
 	};
 
@@ -41,6 +39,9 @@ $(document).ready(function() {
 
 		createNewObj(employee);
 
+		//save new object to array - is this necessary?
+
+
 		//this is the remove button functionality:
 		$(".newobj").on('click', ".removebutton", function(){
 			this.closest("div").remove();
@@ -52,11 +53,11 @@ $(document).ready(function() {
 	function reviewColorIndicator (){
 		parseInt(employee.reviewscore);
 		if(employee.reviewscore <= 2) {
-			$("body").find(".newobj").addClass("low");
+			$(".var").last().addClass("low");
 		} else if (employee.reviewscore == 3) {
-			$("body").find(".newobj").addClass("med");
+			$(".var").last().addClass("med");
 		} else {
-			$("body").find(".newobj").addClass("high");
+			$(".var").last().addClass("high");
 		}
 	}
 //$(this).find(".score").addClass("low var")
