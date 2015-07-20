@@ -8,9 +8,9 @@ $(document).ready(function() {
 	//create variable for alphabetizing, etc.
 	var employeeRoster = [];
 	//variables for random employee generation 
-	var randomEmplFirstNames = ["Jill", "Mohammed", "Tyler", "Che", "Manuela"];
-	var randomEmplLastNames = ["Boo", "Little", "Boolittle", "Littleboo", "LittleBooBoo"];
-	var randomEmplTitle = ["Groundskeeper", "Lead Investigator", "PETA Activist", "Surfer", "Locksmith", "Junior Busboy"];
+	var randomEmplFirstNames = ["Jill", "Mohammed", "Tyler", "Che", "Manuela", "Jim", "Mo", "Ty", "Chelsea", "Mannie"];
+	var randomEmplLastNames = ["Boo", "Little", "Boolittle", "Littleboo", "LittleBooBoo", "Brindlehorse", "Soujourner", "Cohen", "Tryst", "Gunner"];
+	var randomEmplTitle = ["Groundskeeper", "Lead Investigator", "PETA Activist", "Surfer", "Locksmith", "Junior Busboy", "Lingerie Salesperson", "CIA Informant", "Horse Whisperer", "President"];
 
 	//function that creates/appends a new object to the DOM body 
 		//displays all data from form inputs
@@ -19,6 +19,16 @@ $(document).ready(function() {
 		$("body").append("<div class='newobj'><p>first name: " + employee.firstname + "</p><p><button class='removebutton'>remove</button></p><p>last name: " + employee.lastname + "</p><p> employee number: " + employee.employeenumber + "</p><p>title: " + employee.title + "</p><p>salary: " + employee.salary + "</p><p><span class='score var'>review score: " + employee.reviewscore + "</span></p></div>");
 		reviewColorIndicator();
 	};
+
+	var randomNew = function(){
+		createNewObj(employee);
+		employee.firstname = randomEmplFirstNames[randomNumber(0, 9)];
+		employee.lastname = randomEmplLastNames[randomNumber(0, 9)];
+		employee.title = randomEmplTitle[randomNumber(0, 9)];
+		employee.employeenumber = randomNumber(1, 1000);
+		employee.salary = randomNumber(10000, 345000000);
+		employee.reviewscore = randomNumber(1, 5);
+	}
 
 	//clearing form fields after button click - NOT WORKING
 	var clearForm = function(){
@@ -40,9 +50,9 @@ $(document).ready(function() {
 
 		createNewObj(employee);
 
-		//save new object to array - is this necessary? is it working?
-		employeeRoster[i] = $(".newobj").last();
-		i++;
+		// //save new object to array - is this necessary? is it working? (PROBABLY NOT USEFUL)
+		// employeeRoster[i] = $(".newobj").last();
+		// i++;
 
 
 		//this is the remove button functionality:
@@ -68,10 +78,13 @@ $(document).ready(function() {
 
 //function for random new employee assignment
 
-	// function randomEmpl() {
-	// 	createNewObj();
-	// 	$(".newobj").last()
-	// }
+	function randomNumber (min, max) {
+		return Math.floor(Math.random() * (1 + max - min) + min);
+	}
+
+	$("body").on("click", "#emplRandomizer", function() {
+		randomNew();
+	});
 
 });
 
