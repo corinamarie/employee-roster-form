@@ -5,8 +5,8 @@ $(document).ready(function() {
 	//variable is primary object that will make DOM objects displaying employee info
 	var employee = {};
 
-	//create variable for alphabetizing
-		//var employeeRoster = [];
+	//create variable for alphabetizing, etc.
+	var employeeRoster = [];
 	//variables for random employee generation 
 	var randomEmplFirstNames = ["Jill", "Mohammed", "Tyler", "Che", "Manuela"];
 	var randomEmplLastNames = ["Boo", "Little", "Boolittle", "Littleboo", "LittleBooBoo"];
@@ -16,7 +16,7 @@ $(document).ready(function() {
 		//displays all data from form inputs
 		//remove buttons added to end of newobj's contents
 	var createNewObj = function(){
-		$("body").append("<div class='newobj'><p>first name: " + employee.firstname + "</p><p>last name: " + employee.lastname + "</p><p> employee number: " + employee.employeenumber + "</p><p>title: " + employee.title + "</p><p>salary: " + employee.salary + "</p><p><span class='score var'>review score: " + employee.reviewscore + "</span><p><button class='removebutton'>remove</button></p></div>");
+		$("body").append("<div class='newobj'><p>first name: " + employee.firstname + "</p><p><button class='removebutton'>remove</button></p><p>last name: " + employee.lastname + "</p><p> employee number: " + employee.employeenumber + "</p><p>title: " + employee.title + "</p><p>salary: " + employee.salary + "</p><p><span class='score var'>review score: " + employee.reviewscore + "</span></p></div>");
 		reviewColorIndicator();
 	};
 
@@ -28,6 +28,7 @@ $(document).ready(function() {
 	//main function-- creates the new object and inputs each form input field into proper object properties
 	$("#employeeForm").submit(function(event) { 
 		event.preventDefault();
+		var i = 0;
 		var $inputs = $("#employeeForm :input");
 
 		$inputs.each(function(){
@@ -39,7 +40,9 @@ $(document).ready(function() {
 
 		createNewObj(employee);
 
-		//save new object to array - is this necessary?
+		//save new object to array - is this necessary? is it working?
+		employeeRoster[i] = $(".newobj").last();
+		i++;
 
 
 		//this is the remove button functionality:
@@ -47,9 +50,11 @@ $(document).ready(function() {
 			this.closest("div").remove();
 		});
 
+		console.log(employeeRoster);
+
 	});
 
-	//review score function to color-code background color -- ISSUES / sort of working
+	//review score function to color-code background color of employee objects
 	function reviewColorIndicator (){
 		parseInt(employee.reviewscore);
 		if(employee.reviewscore <= 2) {
@@ -60,13 +65,13 @@ $(document).ready(function() {
 			$(".var").last().addClass("high");
 		}
 	}
-//$(this).find(".score").addClass("low var")
 
 //function for random new employee assignment
 
-	//function randomEmpl() {
-
-	//}
+	// function randomEmpl() {
+	// 	createNewObj();
+	// 	$(".newobj").last()
+	// }
 
 });
 
