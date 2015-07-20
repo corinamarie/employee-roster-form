@@ -1,0 +1,67 @@
+body {
+	color: black;
+	font-family: Courier;
+}
+
+button {
+	font-family: Courier;
+	background-color: #8DB200;
+	border: 2px solid black;
+	border-radius: 4px;
+}
+
+h2 {
+	text-align: center;
+}
+
+.var {
+	height: 15px;
+	font-family: Courier;
+	border: 2px solid black;
+	border-radius: 4px;
+	padding: 30px;
+	text-align: center;
+	line-height: 70px;
+}
+
+.low {
+	background-color: #7F3D5E;
+}
+
+.avg {
+	background-color: #6E4E7F;
+}
+
+.high {
+	background-color: #A4C2CC;
+}
+
+.newobj {
+	background-color: #6E4E7F;
+	text-align: left;
+	width: 400px;
+	display: block;
+	margin: 30px;
+	padding-top: 30px;
+	padding: 30px;
+	border: 2px solid black;
+	border-radius: 5px;
+}
+
+.removebutton {
+	width: 60px;
+	height: 40px;
+	display: inline;
+}
+
+#employeeForm {
+	padding: 30px;
+	margin: 50px 0 0 50px;
+}
+
+#emplRandomizer {
+	width: 100px;
+	height: 60px;
+	font-color: green;
+	margin: 50px 0 0 50px;
+}
